@@ -2,17 +2,33 @@
 
 class Zoo:
     def __init__(self):
-        pass
+        self.animal_list = []
+        self.animal_code = []
 
     def add_animal(self, animal):
-        pass
+        if f'{animal.name} the {animal.species}' not in self.animal_list:
+            self.animal_list.append(f'{animal.name} the {animal.species}')
+            self.animal_code.append(animal)
+        else:
+            print(f'{animal.name} the {animal.species}은 이미 동물원에 있습니다. 다른 이름을 사용하거나, 다른 종으로 추가해 주세요.')
 
     def show_animals(self):
-        pass
+        print('현재 동물원에는 다음 동물들이 있습니다.')
+        for animal in self.animal_list:
+            print(f'- {animal}')
+        
+    def show_animals_by_species(self, species):
+        print(f'현재 동물원에 있는 {species}는 다음과 같습니다.')
+        for animal in self.animal_code:
+            if animal.species == species:
+                print(f'- {animal.name} the {animal.species}')
+            else:
+                pass
 
 class Animal:
     def __init__(self, name, species):
-        pass
+        self.name = name
+        self.species = species
 
 def main():
     # 동물원을 선언하고 10마리의 동물들을 추가합니다.
@@ -64,6 +80,9 @@ def main():
     '''
     "Leo the Lion"은 이미 동물원에 있습니다. 다른 이름을 사용하거나, 다른 종으로 추가해주세요.
     '''
+    
+    zoo.show_animals()
 
 if __name__ == "__main__":
+    zoo = Zoo()
     main()
